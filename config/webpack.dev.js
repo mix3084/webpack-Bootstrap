@@ -22,7 +22,10 @@ module.exports = merge(common, {
 		hot: true,
 		port: 8080,
 		watchOptions: {
-			poll: true
+			ignored: /node_modules/,
+			followSymlinks: true,
+			aggregateTimeout: 600,
+			poll: 1000
 		}
 	},
 

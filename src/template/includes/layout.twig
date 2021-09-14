@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		{% block head %}
+			<title>{% block title %}{% endblock %} - My Webpage</title>
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+			{% block header %}
+				{% include "header.twig" %}
+			{% endblock %}
+			<div class="nav-scroller py-1 mb-2">
+				<nav class="nav d-flex justify-content-between">
+					<a class="p-2 link-secondary" href="#"> Мир </a>
+					<a class="p-2 link-secondary" href="#">U.S.</a>
+					<a class="p-2 link-secondary" href="#"> Технология </a>
+					<a class="p-2 link-secondary" href="#"> Дизайн </a>
+					<a class="p-2 link-secondary" href="#"> Культура </a>
+					<a class="p-2 link-secondary" href="#"> Бизнес </a>
+					<a class="p-2 link-secondary" href="#"> Политика </a>
+					<a class="p-2 link-secondary" href="#"> Мнение </a>
+					<a class="p-2 link-secondary" href="#"> Наука </a>
+					<a class="p-2 link-secondary" href="#"> Здоровье </a>
+					<a class="p-2 link-secondary" href="#"> Стиль </a>
+					<a class="p-2 link-secondary" href="#"> Путешествовать </a>
+				</nav>
+			</div>
+		</div>
+		<main class="container">
+			{% block content %}{% endblock %}
+		</main>
+		{% block footer %}
+			{% include "footer.twig" %}
+		{% endblock %}
+	</body>
+</html>

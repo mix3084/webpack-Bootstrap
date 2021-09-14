@@ -1,10 +1,36 @@
+const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
+// Нам нужен модуль Nodes fs для чтения содержимого каталога
+const fs = require('fs')
+
 const paths = require('./paths')
+
+// Наша функция, которая генерирует наши html-плагины
+function generateHtmlPlugins (templateDir) {
+	// Читать файлы в каталоге шаблона
+	const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+	return templateFiles.map(item => {
+		// Разделить имена и расширения
+		const parts = item.split('.')
+		const name = parts[0]
+		const extension = parts[1]
+		// Создать новый HTMLWebpackPlugin с параметрами
+		return new HtmlWebpackPlugin({
+			// filename: `${name}.html`,
+			// eslint-disable-next-line max-len
+			template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+			minify: false
+		})
+	})
+}
+  
+// Мы будем вызывать функцию так:
+const htmlPlugins = generateHtmlPlugins('./../src/template/views')
 
 module.exports = {
 	// Где webpack хочет начать сборку пакета
@@ -37,15 +63,6 @@ module.exports = {
 			],
 		}),
 
-		// Создает HTML-файл из шаблона
-		// Создает предупреждение об устаревании: https://github.com/jantimon/html-webpack-plugin/issues/1501
-		new HtmlWebpackPlugin({
-			title: 'webpack Boilerplate',
-			favicon: `${paths.src  }/images/favicon.png`,
-			template: `${paths.src  }/template.html`, // файл шаблона
-			filename: 'index.html', // выходной файл
-		}),
-
 		// Конфигурация ESLint
 		new ESLintPlugin({
 			files: ['.', 'src', 'config'],
@@ -54,8 +71,10 @@ module.exports = {
 
 		// Более красивая конфигурация
 		new PrettierPlugin(),
-	],
-
+	]
+		// Присоединяем наш массив htmlPlugin до конца
+		// нашего массива плагинов webpack.
+		.concat(htmlPlugins),
 	// Определите, как обрабатываются модули в рамках проекта
 	module: {
 		rules: [
@@ -68,7 +87,15 @@ module.exports = {
 
 			// Fonts and SVGs: Встроенные файлы
 			{ test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
-		],
+
+			{
+				test: /\.twig$/,
+				use: [
+				  'raw-loader',
+				  'twig-html-loader'
+				]
+			  }
+		]
 	},
 
 	resolve: {

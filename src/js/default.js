@@ -5,8 +5,8 @@ class DefaultClass {
 
 	sayHi() {
 		const str = `Hello, ${this.name}!`
-		// eslint-disable-next-line no-alert
-		alert(str)
+		// eslint-disable-next-line no-console
+		console.log(str)
 	}
 }
 

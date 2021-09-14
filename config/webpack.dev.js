@@ -47,11 +47,14 @@ module.exports = merge(common, {
 							// `postcssOptions` требуется для postcss 8.x;
 							// если Вы используете postcss 7.x пропустите ключ
 							postcssOptions: {
+								// eslint-disable-next-line max-len
 								// плагины postcss, можно экспортировать в postcss.config.js
-								plugins: function () {
+								plugins () {
 									return [
+										// eslint-disable-next-line max-len
+										// eslint-disable-next-line global-require
 										require('autoprefixer')
-									];
+									]
 								}
 							},
 							sourceMap: true

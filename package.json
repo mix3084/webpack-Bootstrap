@@ -1,6 +1,6 @@
 {
     "name": "webpack-bootstrap",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Sensible webpack 5 boilerplate using Babel and PostCSS with a hot dev server and an optimized production build.",
     "main": "index.js",
     "author": "Maxim Mironov",

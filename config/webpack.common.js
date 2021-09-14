@@ -8,7 +8,7 @@ const paths = require('./paths')
 
 module.exports = {
 	// Где webpack хочет начать сборку пакета
-	entry: [paths.src + '/index.js'],
+	entry: [`${paths.src  }/index.js`],
 
 	// Где webpack выводит активы и пакеты
 	output: {
@@ -19,6 +19,7 @@ module.exports = {
 
 	// Настройте процесс сборки веб-пакета
 	plugins: [
+		// eslint-disable-next-line max-len
 		// Удаляет / очищает папки сборки и неиспользуемые ресурсы при восстановлении
 		new CleanWebpackPlugin(),
 
@@ -40,8 +41,8 @@ module.exports = {
 		// Создает предупреждение об устаревании: https://github.com/jantimon/html-webpack-plugin/issues/1501
 		new HtmlWebpackPlugin({
 			title: 'webpack Boilerplate',
-			favicon: paths.src + '/images/favicon.png',
-			template: paths.src + '/template.html', // файл шаблона
+			favicon: `${paths.src  }/images/favicon.png`,
+			template: `${paths.src  }/template.html`, // файл шаблона
 			filename: 'index.html', // выходной файл
 		}),
 
@@ -58,6 +59,7 @@ module.exports = {
 	// Определите, как обрабатываются модули в рамках проекта
 	module: {
 		rules: [
+			// eslint-disable-next-line max-len
 			// JavaScript: Используйте Babel для преобразования файлов JavaScript
 			{ test: /\.js$/, use: ['babel-loader'] },
 

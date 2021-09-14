@@ -10,7 +10,7 @@
 			}
 		],
 		"prefer-template": 1,
-		"indent": [1, "tab"],
+		"indent": [1, "tab", { "VariableDeclarator": "first" }],
 		"object-curly-spacing": 1,
 		"no-multiple-empty-lines": [
 			1,

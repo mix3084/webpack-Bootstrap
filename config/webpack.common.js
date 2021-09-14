@@ -24,7 +24,10 @@ function generateHtmlPlugins (templateDir) {
 			// filename: `${name}.html`,
 			// eslint-disable-next-line max-len
 			template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-			minify: false
+			minify: {
+				collapseWhitespace: true,
+				preserveLineBreaks: true,
+			}
 		})
 	})
 }

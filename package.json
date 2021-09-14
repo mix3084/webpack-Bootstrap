@@ -1,6 +1,6 @@
 {
 	"name": "webpack-bootstrap",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Sensible webpack 5 boilerplate using Babel and PostCSS with a hot dev server and an optimized production build.",
 	"main": "index.js",
 	"author": "Maxim Mironov",
@@ -54,5 +54,9 @@
 		"@popperjs/core": "^2.10.1",
 		"bootstrap": "^5.1.1",
 		"popper.js": "^1.16.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mix3084/webpack-Bootstrap.git"
 	}
 }

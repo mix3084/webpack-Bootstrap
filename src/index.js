@@ -1,2 +1,2 @@
 import '@/styles/index.scss'
-import '@/js/bootstrap'
+import '@/js/main'
